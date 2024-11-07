@@ -1030,6 +1030,25 @@
                     "type": "object",
                     "x-kubernetes-map-type": "atomic"
                   },
+                  "selectorMechanism": {
+                    "allOf": [
+                      {
+                        "enum": [
+                          "RelabelConfig",
+                          "RoleSelector"
+                        ]
+                      },
+                      {
+                        "enum": [
+                          "RelabelConfig",
+                          "RoleSelector"
+                        ]
+                      }
+                    ],
+                    "default": "RelabelConfig",
+                    "description": "Mechanism used to select the endpoints to scrape.\nBy default, the selection process relies on relabel configurations to filter targets.\nAlternatively, you can opt for role selectors, which may offer better efficiency in large clusters.\nUsing role selectors bypasses the need for complex relabeling, making it more suitable for high-scale environments.",
+                    "type": "string"
+                  },
                   "targetLabels": {
                     "description": "`targetLabels` defines the labels which are transferred from the\nassociated Kubernetes `Service` object onto the ingested metrics.",
                     "items": {

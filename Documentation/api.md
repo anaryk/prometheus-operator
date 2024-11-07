@@ -3662,6 +3662,22 @@ Kubernetes meta/v1.LabelSelector
 </tr>
 <tr>
 <td>
+<code>selectorMechanism</code><br/>
+<em>
+<a href="#monitoring.coreos.com/v1.SelectorMechanism">
+SelectorMechanism
+</a>
+</em>
+</td>
+<td>
+<p>Mechanism used to select the endpoints to scrape.
+By default, the selection process relies on relabel configurations to filter targets.
+Alternatively, you can opt for role selectors, which may offer better efficiency in large clusters.
+Using role selectors bypasses the need for complex relabeling, making it more suitable for high-scale environments.</p>
+</td>
+</tr>
+<tr>
+<td>
 <code>namespaceSelector</code><br/>
 <em>
 <a href="#monitoring.coreos.com/v1.NamespaceSelector">
@@ -9602,6 +9618,34 @@ string
 </tr>
 </tbody>
 </table>
+<h3 id="monitoring.coreos.com/v1.KubernetesRole">KubernetesRole
+(<code>string</code> alias)</h3>
+<p>
+(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.K8SSelectorConfig">K8SSelectorConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.KubernetesSDConfig">KubernetesSDConfig</a>)
+</p>
+<div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr><td><p>&#34;Endpoints&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;EndpointSlice&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;Ingress&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;Node&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;Pod&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;Service&#34;</p></td>
+<td></td>
+</tr></tbody>
+</table>
 <h3 id="monitoring.coreos.com/v1.LabelName">LabelName
 (<code>string</code> alias)</h3>
 <p>
@@ -15394,6 +15438,26 @@ Kubernetes core/v1.ConfigMapKeySelector
 </tr>
 </tbody>
 </table>
+<h3 id="monitoring.coreos.com/v1.SelectorMechanism">SelectorMechanism
+(<code>string</code> alias)</h3>
+<p>
+(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ServiceMonitorSpec">ServiceMonitorSpec</a>)
+</p>
+<div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr><td><p>&#34;RelabelConfig&#34;</p></td>
+<td></td>
+</tr><tr><td><p>&#34;RoleSelector&#34;</p></td>
+<td></td>
+</tr></tbody>
+</table>
 <h3 id="monitoring.coreos.com/v1.ServiceDiscoveryRole">ServiceDiscoveryRole
 (<code>string</code> alias)</h3>
 <p>
@@ -15500,6 +15564,22 @@ Kubernetes meta/v1.LabelSelector
 </td>
 <td>
 <p>Label selector to select the Kubernetes <code>Endpoints</code> objects to scrape metrics from.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>selectorMechanism</code><br/>
+<em>
+<a href="#monitoring.coreos.com/v1.SelectorMechanism">
+SelectorMechanism
+</a>
+</em>
+</td>
+<td>
+<p>Mechanism used to select the endpoints to scrape.
+By default, the selection process relies on relabel configurations to filter targets.
+Alternatively, you can opt for role selectors, which may offer better efficiency in large clusters.
+Using role selectors bypasses the need for complex relabeling, making it more suitable for high-scale environments.</p>
 </td>
 </tr>
 <tr>
@@ -23599,7 +23679,7 @@ bool
 <td>
 <code>role</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.KubernetesRole">
+<a href="#monitoring.coreos.com/v1.KubernetesRole">
 KubernetesRole
 </a>
 </em>
@@ -23677,34 +23757,6 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.KubernetesRole">KubernetesRole
-(<code>string</code> alias)</h3>
-<p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.K8SSelectorConfig">K8SSelectorConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.KubernetesSDConfig">KubernetesSDConfig</a>)
-</p>
-<div>
-</div>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr><td><p>&#34;Endpoints&#34;</p></td>
-<td></td>
-</tr><tr><td><p>&#34;EndpointSlice&#34;</p></td>
-<td></td>
-</tr><tr><td><p>&#34;Ingress&#34;</p></td>
-<td></td>
-</tr><tr><td><p>&#34;Node&#34;</p></td>
-<td></td>
-</tr><tr><td><p>&#34;Pod&#34;</p></td>
-<td></td>
-</tr><tr><td><p>&#34;Service&#34;</p></td>
-<td></td>
-</tr></tbody>
-</table>
 <h3 id="monitoring.coreos.com/v1alpha1.KubernetesSDConfig">KubernetesSDConfig
 </h3>
 <p>
@@ -23742,7 +23794,7 @@ CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceac
 <td>
 <code>role</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.KubernetesRole">
+<a href="#monitoring.coreos.com/v1.KubernetesRole">
 KubernetesRole
 </a>
 </em>

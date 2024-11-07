@@ -17,26 +17,26 @@
 package v1alpha1
 
 import (
-	v1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	v1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
 	corev1 "k8s.io/api/core/v1"
 )
 
 // KubernetesSDConfigApplyConfiguration represents a declarative configuration of the KubernetesSDConfig type for use
 // with apply.
 type KubernetesSDConfigApplyConfiguration struct {
-	APIServer                        *string                                 `json:"apiServer,omitempty"`
-	Role                             *v1alpha1.KubernetesRole                `json:"role,omitempty"`
-	Namespaces                       *NamespaceDiscoveryApplyConfiguration   `json:"namespaces,omitempty"`
-	AttachMetadata                   *AttachMetadataApplyConfiguration       `json:"attachMetadata,omitempty"`
-	Selectors                        []K8SSelectorConfigApplyConfiguration   `json:"selectors,omitempty"`
-	BasicAuth                        *v1.BasicAuthApplyConfiguration         `json:"basicAuth,omitempty"`
-	Authorization                    *v1.SafeAuthorizationApplyConfiguration `json:"authorization,omitempty"`
-	OAuth2                           *v1.OAuth2ApplyConfiguration            `json:"oauth2,omitempty"`
-	v1.ProxyConfigApplyConfiguration `json:",inline"`
-	FollowRedirects                  *bool                               `json:"followRedirects,omitempty"`
-	EnableHTTP2                      *bool                               `json:"enableHTTP2,omitempty"`
-	TLSConfig                        *v1.SafeTLSConfigApplyConfiguration `json:"tlsConfig,omitempty"`
+	APIServer                                  *string                                           `json:"apiServer,omitempty"`
+	Role                                       *v1.KubernetesRole                                `json:"role,omitempty"`
+	Namespaces                                 *NamespaceDiscoveryApplyConfiguration             `json:"namespaces,omitempty"`
+	AttachMetadata                             *AttachMetadataApplyConfiguration                 `json:"attachMetadata,omitempty"`
+	Selectors                                  []K8SSelectorConfigApplyConfiguration             `json:"selectors,omitempty"`
+	BasicAuth                                  *monitoringv1.BasicAuthApplyConfiguration         `json:"basicAuth,omitempty"`
+	Authorization                              *monitoringv1.SafeAuthorizationApplyConfiguration `json:"authorization,omitempty"`
+	OAuth2                                     *monitoringv1.OAuth2ApplyConfiguration            `json:"oauth2,omitempty"`
+	monitoringv1.ProxyConfigApplyConfiguration `json:",inline"`
+	FollowRedirects                            *bool                                         `json:"followRedirects,omitempty"`
+	EnableHTTP2                                *bool                                         `json:"enableHTTP2,omitempty"`
+	TLSConfig                                  *monitoringv1.SafeTLSConfigApplyConfiguration `json:"tlsConfig,omitempty"`
 }
 
 // KubernetesSDConfigApplyConfiguration constructs a declarative configuration of the KubernetesSDConfig type for use with
@@ -56,7 +56,7 @@ func (b *KubernetesSDConfigApplyConfiguration) WithAPIServer(value string) *Kube
 // WithRole sets the Role field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Role field is set to the value of the last call.
-func (b *KubernetesSDConfigApplyConfiguration) WithRole(value v1alpha1.KubernetesRole) *KubernetesSDConfigApplyConfiguration {
+func (b *KubernetesSDConfigApplyConfiguration) WithRole(value v1.KubernetesRole) *KubernetesSDConfigApplyConfiguration {
 	b.Role = &value
 	return b
 }
@@ -93,7 +93,7 @@ func (b *KubernetesSDConfigApplyConfiguration) WithSelectors(values ...*K8SSelec
 // WithBasicAuth sets the BasicAuth field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the BasicAuth field is set to the value of the last call.
-func (b *KubernetesSDConfigApplyConfiguration) WithBasicAuth(value *v1.BasicAuthApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
+func (b *KubernetesSDConfigApplyConfiguration) WithBasicAuth(value *monitoringv1.BasicAuthApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
 	b.BasicAuth = value
 	return b
 }
@@ -101,7 +101,7 @@ func (b *KubernetesSDConfigApplyConfiguration) WithBasicAuth(value *v1.BasicAuth
 // WithAuthorization sets the Authorization field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the Authorization field is set to the value of the last call.
-func (b *KubernetesSDConfigApplyConfiguration) WithAuthorization(value *v1.SafeAuthorizationApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
+func (b *KubernetesSDConfigApplyConfiguration) WithAuthorization(value *monitoringv1.SafeAuthorizationApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
 	b.Authorization = value
 	return b
 }
@@ -109,7 +109,7 @@ func (b *KubernetesSDConfigApplyConfiguration) WithAuthorization(value *v1.SafeA
 // WithOAuth2 sets the OAuth2 field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the OAuth2 field is set to the value of the last call.
-func (b *KubernetesSDConfigApplyConfiguration) WithOAuth2(value *v1.OAuth2ApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
+func (b *KubernetesSDConfigApplyConfiguration) WithOAuth2(value *monitoringv1.OAuth2ApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
 	b.OAuth2 = value
 	return b
 }
@@ -171,7 +171,7 @@ func (b *KubernetesSDConfigApplyConfiguration) WithEnableHTTP2(value bool) *Kube
 // WithTLSConfig sets the TLSConfig field in the declarative configuration to the given value
 // and returns the receiver, so that objects can be built by chaining "With" function invocations.
 // If called multiple times, the TLSConfig field is set to the value of the last call.
-func (b *KubernetesSDConfigApplyConfiguration) WithTLSConfig(value *v1.SafeTLSConfigApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
+func (b *KubernetesSDConfigApplyConfiguration) WithTLSConfig(value *monitoringv1.SafeTLSConfigApplyConfiguration) *KubernetesSDConfigApplyConfiguration {
 	b.TLSConfig = value
 	return b
 }
